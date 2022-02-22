@@ -1,0 +1,73 @@
+<!-- <label>User Name:</label>
+<input type="text" class="form-control" [(ngModel)]="userName" />
+<p>{{ userName }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="userName === ''"
+  (click)="userName = ''"
+>
+  Add User
+</button>
+<hr />
+<label>Server Name</label>
+<input type="text" class="form-control" (input)="onCreateServerName($event)" />
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<p>{{ serverName }}</p>
+<hr />
+<button
+  class="btn btn-primary"
+  [disabled]="!allowServer"
+  (click)="OnCreateServer()"
+>
+  Add Server
+</button>
+<p
+  *ngIf="serverCreated; else noServer"
+  [ngStyle]="{ backgrounColor: getColor() }"
+>
+  New server is created & server is {{ serverStatus }}!
+</p>
+<ng-template #noServer>
+  <p>No new server is created and server status is {{ serverStatus }}</p>
+</ng-template>
+
+<p>{{ serverCreationStatus }}</p>
+<p [innerText]="allowServer"></p>
+<hr />
+<app-warning-alert *ngFor="let server of servers"></app-warning-alert>
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'Online' }"
+>
+  server with server ID : {{ serverID }} is {{ serverStatus }}
+</p>
+ -->
+
+<!-- <label>Server Name</label>
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<hr />
+<p>{{ serverName }}</p>
+<hr />
+<button
+  class="btn btn-primary"
+  [disabled]="!allowServer"
+  (click)="OnCreateServer()"
+>
+  Create server
+</button>
+<hr />
+<hr />
+<p *ngIf="serverCreated">
+  New server was created, Server Name is {{ serverName }}
+</p>
+<app-warning-alert *ngFor="let server of servers"></app-warning-alert> -->
+<button class="btn btn-primary" (click)="addToggle()">Display Details</button>
+<hr />
+<p *ngIf="showSecret">Secret password = Angualr</p>
+<div
+  *ngFor="let logIteam of log; let i = index"
+  [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+  [ngClass]="{ 'white-text': i >= 4 }"
+>
+  {{ logIteam }}
+</div>

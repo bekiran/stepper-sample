@@ -1,0 +1,60 @@
+<p>stepper works!</p>
+<mat-horizontal-stepper>
+  <!-- first stepper -->
+  <mat-step label="Select State" completed="true">
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let state of states" [value]="state">{{
+          state
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div><button mat-button matStepperNext>Next</button></div>
+  </mat-step>
+
+  <!-- second stepper -->
+  <mat-step label="Add to table" completed="false">
+    <!-- drag and drop container start -->
+    <div cdkDropListGroup>
+      <div class="container">
+        <!-- left container -->
+        <h2>BMW CARS DATA</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="carDetails"
+          class="list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="box" *ngFor="let details of carDetails" cdkDrag>
+            {{ details }}
+          </div>
+        </div>
+
+        <!-- right container -->
+        <h2>BMW</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="detailsCalculation"
+          class="list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="box" *ngFor="let details of detailsCalculation" cdkDrag>
+            {{ details }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- drag and drop container ends -->
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <!-- final stepper -->
+  <mat-step label="Submit" completed="false">
+    <button mat-button matStepperPrevious>Back</button></mat-step
+  >
+</mat-horizontal-stepper>
